@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for @group do |f| %>
+    <%= f.input :name, required: true %>
+    <%= f.input :description, as: :text, required: true %>
+    <%= f.button :submit, data: { disable_with: "Submiting..." } %>
+  <% end %>
+</div>

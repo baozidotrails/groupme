@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @group.name %></h1>
+  <%= link_to 'Join Group', join_group_path(@group), method: :post %>
+  <%= link_to 'Quit Group', quit_group_path(@group), method: :post %>
+  <p><%= @group.description %></p>
+  <hr>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= post.content %> - <strong><%= post.author.name %></strong>
+        <% if current_user && post.editable_by?(current_user) %>
+          <%= link_to 'Edit', edit_group_post_path(post.group, post) %>
+          <%= link_to 'Delete', group_post_path(post.group, post), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if current_user && current_user.is_member_of?(@group) %>
+    <%= link_to 'New Post', new_group_post_path(@group) %>
+  <% end %>
+  <%= link_to 'Group List', groups_path %>
+</div>
