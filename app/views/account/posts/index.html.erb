@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>My Posts</h1>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= simple_format(post.content) %>
+        <%= post.group.name %>
+        <%= post.updated_at.to_s(:long) %>
+        <%= link_to 'Edit', edit_group_post_path(post.group, post) %>
+        <%= link_to 'Delete', group_post_path(post.group, post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

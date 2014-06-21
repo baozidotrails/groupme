@@ -6,5 +6,6 @@ class CreateGroupUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    remove_column :groups, :posts_count
   end
 end

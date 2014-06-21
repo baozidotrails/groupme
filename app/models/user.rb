@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  # We use exclamation "!" at the end of method because we are going to alter this object.
+  # We use exclamation "?" at the end of method because we are going to return boolean value.
+
   def join!(group)
     participated_groups << group
   end
